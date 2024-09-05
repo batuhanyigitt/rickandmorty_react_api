@@ -1,7 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-export default function GenderFilter() {
+const GenderFilter = ({ setGender }) => {
   return (
-    <div>GenderFilter</div>
-  )
-}
+    <select onChange={(e) => setGender(e.target.value)}>
+      <option value="">All</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Genderless">Genderless</option>
+      <option value="unknown">Unknown</option>
+    </select>
+  );
+};
+
+export default GenderFilter;

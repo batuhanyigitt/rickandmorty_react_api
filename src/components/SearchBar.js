@@ -1,7 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-export default function SearchBar() {
+const SearchBar = ({ setSearchTerm }) => {
   return (
-    <div>SearchBar</div>
-  )
-}
+    <input
+      type="text"
+      placeholder="Search by name..."
+      onChange={(e) => setSearchTerm(e.target.value)}
+    />
+  );
+};
+
+export default SearchBar;
