@@ -1,30 +1,77 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./CharacterList.css";
 
 const CharacterDetail = () => {
   const { id } = useParams();
   const [character, setCharacter] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((response) => setCharacter(response.data))
-      .catch((error) => console.error(error));
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `https://rickandmortyapi.com/api/character/${id}`
+        );
+        setCharacter(response.data);
+        setError(null);
+      } catch (err) {
+        setError("An error occured while fetching character details");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, [id]);
 
-  if (!character) return <p>Loading...</p>;
+  if (loading) {
+    return <div className="spinner"></div>;
+  }
+
+  if (error) {
+    return <p style={{ color: "red" }}>{error}</p>;
+  }
+
+  if (!character) {
+    return <p>Loading...</p>;
+  }
 
   return (
-    <div>
-      <button onClick={() => navigate(-1)}>Back</button>
-      <h2>{character.name}</h2>
-      <img src={character.image} alt={character.name} />
-      <p>Status: {character.status}</p>
-      <p>Species: {character.species}</p>
-      <p>Gender: {character.gender}</p>
-      <p>Origin: {character.origin.name}</p>
+    <div className="character-detail">
+      <button onClick={() => navigate(-1)} className="back-button">
+        Back
+      </button>
+      <div className="character-info">
+        <img
+          src={character.image}
+          alt={character.name}
+          className="character-image"
+        />
+        <div className="character-details">
+          <h2>{character.name}</h2>
+          <p>
+            <strong>Status: </strong>
+            {character.status}
+          </p>
+          <p>
+            <strong>Species: </strong>
+            {character.species}
+          </p>
+          <p>
+            <strong>Gender: </strong>
+            {character.gender}
+          </p>
+          <p>
+            <strong>Origin: </strong>
+            {character.origin}
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
