@@ -6,6 +6,25 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## Clone the repository:
+
+git clone https://github.com/batuhanyigitt/rickandmortytask.git
+
+
+ ## Install dependencies:
+
+npm install or yarn install
+
+
+
+npm install axios react-toastify
+
+
+ ## or 
+
+yarn add axios react-toastify
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
