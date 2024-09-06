@@ -43,7 +43,7 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
   cursor: pointer;
-  background-color: var(--card-bg);
+  background-color: var(--card-bg, #fff);
 }
 
 .character-card:hover {
@@ -79,6 +79,8 @@ button:hover {
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   transition: opacity 0.3s ease;
+  max-width: 90%;
+  width: 500px;
 }
 
 .modal.open {
@@ -102,15 +104,35 @@ button:hover {
 .pagination button {
   background-color: #3498db;
   color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pagination button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
 }
 
 .pagination span {
   font-size: 1.1rem;
 }
 
+@media (max-width: 1200px) {
+  .character-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  .character-card {
+    padding: 1.25rem;
+  }
+}
+
 @media (max-width: 768px) {
   .character-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 
   .character-card {
@@ -120,5 +142,35 @@ button:hover {
   button {
     font-size: 14px;
     padding: 8px 16px;
+  }
+
+  .modal {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .pagination {
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pagination button {
+    padding: 0.5rem;
+    font-size: 12px;
+  }
+
+  .modal {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .character-card h3 {
+    font-size: 1rem;
   }
 }
