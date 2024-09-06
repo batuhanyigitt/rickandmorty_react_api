@@ -16,13 +16,24 @@ git clone https://github.com/batuhanyigitt/rickandmortytask.git
 npm install or yarn install
 
 
+## Axios 
 
 npm install axios react-toastify
-
 
  ## or 
 
 yarn add axios react-toastify
+
+
+## Router
+
+npm install react-router-dom
+
+or 
+
+yarn add react-router-dom
+
+
 
 
 ### `npm start`
