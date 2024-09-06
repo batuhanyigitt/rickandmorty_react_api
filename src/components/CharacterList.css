@@ -1,9 +1,38 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.App.light {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+.App.dark {
+  --background-color: #121212;
+  --text-color: #ffffff;
+}
+
 .character-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 1.5rem;
   padding: 1rem;
-  transition: all 0.3s ease-in-out;
+  background: linear-gradient(
+    135deg,
+    #ff9a9e,
+    #fad0c4,
+    #fbc2eb,
+    #f6f6f6,
+    #e0c3fc
+  );
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .character-card {
@@ -172,5 +201,23 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
   }
 }

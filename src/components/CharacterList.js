@@ -18,7 +18,6 @@ const CharacterList = () => {
   const cache = {};
   const CACHE_TIMEOUT = 5 * 60 * 1000;
 
-
   const localStorageKey = "rickAndMortyCharacterCache";
   const savedCache = JSON.parse(localStorage.getItem(localStorageKey)) || {};
 
@@ -124,23 +123,28 @@ const CharacterList = () => {
   };
 
   const renderPageNumbers = () => {
-    let pages = [];
-    for (let i = 1; i <= totalPages; i++) {
+    const pages = [];
+    const maxPagesToShow = 5;
+    const startPage = Math.max(1, page - Math.floor(maxPagesToShow / 2));
+    const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+
+    for (let i = startPage; i <= endPage; i++) {
       pages.push(
         <button
           key={i}
-          className={page === i ? "active" : ""}
+          className={`pagination-button ${page === i ? "active" : ""}`}
           onClick={() => updateSearchParams(i)}
         >
           {i}
         </button>
       );
     }
+
     return pages;
   };
 
   return (
-    <div>
+    <div className="character-list-container">
       <div className="filter-bar">
         <SearchBar
           setSearchTerm={(value) => updateSearchParams(1, { name: value })}
@@ -177,6 +181,12 @@ const CharacterList = () => {
 
       <div className="pagination">
         <button
+          onClick={() => updateSearchParams(1)}
+          disabled={page === 1}
+        >
+          First
+        </button>
+        <button
           onClick={() => updateSearchParams(page - 1)}
           disabled={page === 1}
         >
@@ -188,6 +198,12 @@ const CharacterList = () => {
           disabled={page === totalPages}
         >
           Next
+        </button>
+        <button
+          onClick={() => updateSearchParams(totalPages)}
+          disabled={page === totalPages}
+        >
+          Last
         </button>
       </div>
     </div>
