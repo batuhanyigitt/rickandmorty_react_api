@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./CharacterList.css";
+import "./CharacterDetail.css"; 
 
 const CharacterDetail = () => {
   const { id } = useParams();
   const [character, setCharacter] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null); 
+  const [loading, setLoading] = useState(false); 
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
+      setLoading(true); 
       try {
         const response = await axios.get(
           `https://rickandmortyapi.com/api/character/${id}`
         );
         setCharacter(response.data);
-        setError(null);
+        setError(null); 
       } catch (err) {
-        setError("An error occured while fetching character details");
+        setError("An error occurred while fetching character details.");
       } finally {
-        setLoading(false);
+        setLoading(false); 
       }
     };
 
@@ -30,11 +30,11 @@ const CharacterDetail = () => {
   }, [id]);
 
   if (loading) {
-    return <div className="spinner"></div>;
+    return <div className="spinner"></div>; 
   }
 
   if (error) {
-    return <p style={{ color: "red" }}>{error}</p>;
+    return <p style={{ color: "red" }}>{error}</p>; 
   }
 
   if (!character) {
@@ -55,20 +55,16 @@ const CharacterDetail = () => {
         <div className="character-details">
           <h2>{character.name}</h2>
           <p>
-            <strong>Status: </strong>
-            {character.status}
+            <strong>Status:</strong> {character.status}
           </p>
           <p>
-            <strong>Species: </strong>
-            {character.species}
+            <strong>Species:</strong> {character.species}
           </p>
           <p>
-            <strong>Gender: </strong>
-            {character.gender}
+            <strong>Gender:</strong> {character.gender}
           </p>
           <p>
-            <strong>Origin: </strong>
-            {character.origin}
+            <strong>Origin:</strong> {character.origin.name}
           </p>
         </div>
       </div>
