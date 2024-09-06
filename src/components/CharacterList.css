@@ -21,14 +21,7 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 1.5rem;
   padding: 1rem;
-  background: linear-gradient(
-    135deg,
-    #ff9a9e,
-    #fad0c4,
-    #fbc2eb,
-    #f6f6f6,
-    #e0c3fc
-  );
+  background: var(--background-color);
   background-size: 400% 400%;
   animation: gradientAnimation 10s ease infinite;
   border-radius: 10px;

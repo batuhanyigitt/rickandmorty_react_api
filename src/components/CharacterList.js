@@ -180,10 +180,7 @@ const CharacterList = () => {
       )}
 
       <div className="pagination">
-        <button
-          onClick={() => updateSearchParams(1)}
-          disabled={page === 1}
-        >
+        <button onClick={() => updateSearchParams(1)} disabled={page === 1}>
           First
         </button>
         <button
