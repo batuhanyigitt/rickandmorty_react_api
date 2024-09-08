@@ -1,59 +1,168 @@
+.portal {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, lime, green, darkgreen);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5), inset 0 0 20px rgba(0, 128, 0, 0.7);
+  animation: portalGlow 2s infinite ease-in-out;
+}
+
+@keyframes portalGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5), inset 0 0 20px rgba(0, 128, 0, 0.7);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.7), inset 0 0 30px rgba(0, 128, 0, 0.9);
+  }
+}
+
 .character-detail {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem;
+  background: rgba(30, 30, 30, 0.8);
+  border: 3px solid #34c759;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+  max-width: 1200px;
+  margin: 3rem auto;
+  animation: portalIn 1.5s ease-out forwards;
+  transform: scale(0.8);
+  opacity: 0;
 }
 
-.character-info {
-  display: flex;
-  align-items: center;
-  background: #f5f5f5;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+@keyframes portalIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .character-image {
-  width: 200px;
+  width: 220px;
   height: auto;
-  border-radius: 8px;
-  margin-right: 2rem;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 15px lime;
+  animation: flicker 1s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .character-details {
-  text-align: left;
+  text-align: center;
 }
 
 .character-details h2 {
+  font-size: 2.4rem;
   margin-bottom: 1rem;
+  background: linear-gradient(90deg, #34c759, #5ac18e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 255, 0, 0.6);
 }
 
 .character-details p {
-  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #ffdd57;
+}
+
+.glitch {
+  position: relative;
+  color: #f5f5f5;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  background-color: transparent;
+  text-shadow: 2px 2px #ff00ff;
+}
+
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 cyan;
+  animation: glitch 2s infinite;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 magenta;
+  animation: glitch 2s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    clip: rect(44px, 9999px, 56px, 0);
+    transform: skew(0.3deg);
+  }
+  5% {
+    clip: rect(0, 9999px, 24px, 0);
+    transform: skew(0.1deg);
+  }
+  10% {
+    clip: rect(26px, 9999px, 40px, 0);
+    transform: skew(0.3deg);
+  }
+  15% {
+    clip: rect(12px, 9999px, 20px, 0);
+    transform: skew(0.1deg);
+  }
 }
 
 .back-button {
-  margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #3498db;
+  position: relative;
+  padding: 0.8rem 1.6rem;
+  background: #34c759;
   color: white;
-  border: none;
-  border-radius: 4px;
+  border: 2px solid #5ac18e;
+  border-radius: 50px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px lime;
 }
 
 .back-button:hover {
-  background-color: #2980b9;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px lime;
 }
 
+.back-button:active {
+  background: #0c8724;
+  box-shadow: 0 0 5px darkgreen;
+}
+
+
 .spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-top: 4px solid #3498db;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 255, 0, 0.1);
+  border-top: 5px solid lime;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite, pulse 1.5s ease-in-out infinite;
   margin: 20px auto;
 }
 
@@ -63,6 +172,15 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
   }
 }
 
