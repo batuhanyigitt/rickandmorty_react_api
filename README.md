@@ -8,6 +8,10 @@
 
 
 
+<img width="1440" alt="Screenshot 2024-09-10 at 12 28 35" src="https://github.com/user-attachments/assets/c70df4ce-9a30-4a70-baa5-eb756123eb9a">
+
+
+
 
 ## The character detail page that opens when you click on the cards from the character list and the page with the detailed description of the character: 
 
