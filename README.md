@@ -1,3 +1,27 @@
+## Here's a Quick Look at the Project
+
+## The homepage of the project and the main page where the character list is listed:
+
+
+<img width="1440" alt="Screenshot 2024-09-10 at 12 28 55" src="https://github.com/user-attachments/assets/623d0fbb-3394-4c99-8e67-020c1843afb0">
+
+
+
+
+
+## The character detail page that opens when you click on the cards from the character list and the page with the detailed description of the character: 
+
+
+<img width="1440" alt="Screenshot 2024-09-10 at 12 32 13" src="https://github.com/user-attachments/assets/9d029220-beb3-423a-89b9-13bac54ac92d">
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
